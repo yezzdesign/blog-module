@@ -1,0 +1,26 @@
+{
+    "name": "yezzdesign/blog-module",
+    "type": "laravel-module",
+    "description": "Simple Blogsystem",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Scholz",
+            "email": "yezz.design@schodie.de"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ACP\\": ""
+        }
+    }
+}
+
