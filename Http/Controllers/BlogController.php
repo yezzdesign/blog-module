@@ -18,8 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts  =   Posts::orderBy('id', 'desc')->paginate(25);
-        return view('blog::index', compact('posts'));
+        return view('blog::index', ['posts' => Posts::getAllPostsSortedPaginated()]);
     }
 
     /**

@@ -4,7 +4,9 @@ namespace Modules\Blog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\Blog\Logical\Start;
+use Modules\ACP\Services\PageService;
+use Modules\ACP\Services\TableService;
+use Modules\Blog\Services\StartService;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -30,7 +32,7 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $start  =   new Start();
+        new StartService();
     }
 
     /**
@@ -41,6 +43,11 @@ class BlogServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+
+        $this->app->singleton('BlogEditPage', PageService::class);
+        $this->app->singleton('BlogCreatePage', PageService::class);
+
+        $this->app->singleton('BlogIndexTable', TableService::class);
     }
 
     /**

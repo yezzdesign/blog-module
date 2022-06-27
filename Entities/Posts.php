@@ -25,6 +25,10 @@ class Posts extends Model
         'updated_at',
         ];
 
+    public static function getAllPostsSortedPaginated() {
+        return self::orderBy('id', 'desc')->paginate(25);
+    }
+
     protected static function newFactory()
     {
         return \Modules\Blog\Database\factories\PostsFactory::new();
