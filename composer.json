@@ -1,5 +1,6 @@
 {
     "name": "yezzdesign/blog",
+    "type": "laravel-module",
     "description": "",
     "authors": [
         {
