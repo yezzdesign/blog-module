@@ -18,6 +18,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Acc\Entities\User;
 use Modules\Blog\Entities\Post;
 use Modules\Blog\Filament\Resources\PostResource\RelationManagers\LinksRelationManager;
 use Modules\Library\Entities\Book;
@@ -54,6 +55,12 @@ class PostResource extends Resource
                                     ->compact()
                                     ->aside()
                                     ->schema([
+                                        Select::make('author_id')
+                                            ->label( __('blog::index.form.author_id.label') )
+                                            ->searchable()
+                                            ->required()
+                                            ->options(User::all()->pluck('name', 'id'))
+                                        ,
                                         TextInput::make('title')
                                             ->label( __('blog::index.form.title.name') )
                                             ->required(),
@@ -148,14 +155,14 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label( __('blog::index.table.title'))
                     ->visibleFrom('sm')
-                    ->tooltip( fn(Post $record):string => $record->title )
+                    ->tooltip( fn(Post $record):string => $record->title??'' )
                     ->limit(15)
                     ->sortable()
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('content_short')
                     ->label( __('blog::index.table.content_short') )
-                    ->tooltip( fn(Post $record):string => $record->content_short )
+                    ->tooltip( fn(Post $record):string => $record->content_short??'' )
                     ->searchable()
                     ->sortable()
                     ->visibleFrom('xl')

@@ -22,6 +22,8 @@ return [
     'form.tab2.label'   =>  'Beitrag erstellen',
     'form.tab3.label'   =>  'Sonstiges',
 
+    'form.author_id.label'  =>  'Autor',
+
     'form.title.section.title'          =>  'Titel des Blogs',
     'form.title.section.description'    =>  'Bitte gib hier deinen Titel von deinem Blogbeitrag ein.',
     'form.title.name'                   =>  'Titel',
